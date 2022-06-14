@@ -1,5 +1,5 @@
 from selenium.webdriver.common.by import By
-
+from Config.config import TestData
 from Pages.BasePage import BasePage
 
 
@@ -11,6 +11,7 @@ class AboutPage(BasePage):
 
     def __init__(self, driver):
         super().__init__(driver)
+        self.driver.get(TestData.about_page)
 
     def do_get_online(self):
         return int("".join(self.do_get_element_text(self.ONLINE).split('\n')[1].split(',')))

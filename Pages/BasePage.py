@@ -26,3 +26,12 @@ class BasePage:
 
     def do_get_element(self, locator):
         return WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(locator))
+
+    def is_clickable(self, locator):
+        return WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(locator))
+
+    def is_text_loaded(self, locator, text):
+        return WebDriverWait(self.driver, 10).until(EC.text_to_be_present_in_element(locator, text))
+
+    def do_get_all_elements(self, locator):
+        return self.driver.find_elements(locator)
