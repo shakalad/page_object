@@ -11,8 +11,7 @@ class BasePage:
         WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(locator)).click()
 
     def do_send_keys(self, locator, text):
-        field = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(locator)).clear()
-        field.send_keys(text)
+        WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(locator)).send_keys(text)
 
     def do_get_element_text(self, locator):
         return WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(locator)).text
@@ -35,3 +34,6 @@ class BasePage:
 
     def do_get_all_elements(self, locator):
         return self.driver.find_elements(locator)
+
+    def make_click(self, element):
+        WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(element)).click()
